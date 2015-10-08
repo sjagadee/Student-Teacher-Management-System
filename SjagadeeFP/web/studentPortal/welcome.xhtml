@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/secureTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
+
+    <ui:define name="title">
+        Welcome Student #{facesContext.externalContext.remoteUser}
+    </ui:define>
+
+    <ui:define name="body">
+        <h:dataTable class="table table-hover table-striped" value="#{studentBean.findByUsername(loginController.remoteUser)}" var="student" >
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Student ID"/>
+                </f:facet>
+                <h:outputText value="#{student.id}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Student Name"/>
+                </f:facet>
+                <h:outputText value="#{student.studentName}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Student Email"/>
+                </f:facet>
+                <h:outputText value="#{student.studentEmail}"/>
+            </h:column>
+
+        </h:dataTable>
+        
+        <ezcomp:questions questions="#{questionController.questions}" />
+    </ui:define>
+
+</ui:composition>

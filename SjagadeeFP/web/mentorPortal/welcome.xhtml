@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/secureTemplate.xhtml"
+                xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
+
+    <ui:define name="title">
+        Welcome Mentor #{facesContext.externalContext.remoteUser}
+    </ui:define>
+
+    <ui:define name="body">
+        <ezcomp:questions  questions="#{questionController.questions}"/>
+    </ui:define>
+
+</ui:composition>
